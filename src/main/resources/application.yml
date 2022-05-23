@@ -19,16 +19,22 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 ###
-##allowed:
-  ##origins: https://localhost:4200
+allowed:
+  origins: https://localhost:4200
 ###
 server:
   port: 9030
+  ssl:
+    enabled: true
+    key-alias: luv2code
+    key-store: classpath:luv2code-keystore.p12
+    key-store-password: secret
+    key-store-type: PKCS12
 ###
 eureka:
   client:
-    fetch-registry: true
-    register-with-eureka: true
+    fetch-registry: false
+    register-with-eureka: false
     serviceUrl:
       ##defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
       defaultZone: http://localhost:8761/eureka/
@@ -38,5 +44,3 @@ okta:
     client-id: 0oa4x6ft4elsn2lJQ5d7
     client-secret: BYfZe5fTkL9BIoveFMTlrtIowruKmeI5lcFTZWz-
     issuer: https://dev-42801062.okta.com/oauth2/default
-
-
