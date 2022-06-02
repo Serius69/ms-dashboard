@@ -23,7 +23,7 @@ allowed:
   origins: https://localhost:4200
 ###
 server:
-  port: 9030
+  port: 8083
   ssl:
     enabled: true
     key-alias: luv2code
