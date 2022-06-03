@@ -12,8 +12,8 @@ spring:
     password: mysql
   data:
     rest:
-      base-path: /api
       detection-strategy: ANNOTATED
+      base-path: /api
   jpa:
     properties:
       hibernate:
