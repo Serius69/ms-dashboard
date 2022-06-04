@@ -21,6 +21,12 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query(value="select sum(total_quantity) from orders GROUP BY YEAR(date_created), MONTH(date_created)",nativeQuery = true)
     public Integer getPrendasMes();
 
+    //prendas vendidas por mes y categoria
+    @Query(value="select pc.category_name, sum(total_quantity) from orders as o JOIN order_item  as oi JOIN product as p JOIN product_category as pc " +
+            "WHERE pc.id = p.category_id and p.id = oi.product_id AND o.order_tracking_number=oi.id\n" +
+            "GROUP BY pc.category_name",nativeQuery = true)
+    public Integer getPrendasMesCategoria();
+
     //monto de ventas por mes
     @Query(value="select sum(total_price) from orders GROUP BY YEAR(date_created), MONTH(date_created)",nativeQuery = true)
     public Float getMontoMes();

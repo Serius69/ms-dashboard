@@ -17,7 +17,6 @@ import java.util.List;
 @RequestMapping("/api/dashboard")
 public class ProductController {
     private ProductService productService;
-
     private ProductRepository productRepository;
 
     @Autowired

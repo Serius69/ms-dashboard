@@ -31,6 +31,12 @@ public class OrderController {
         return new ResponseEntity<>(a, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/prendasmescategoria", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getPrendasMesCategoria(){
+        Integer a = orderRepository.getPrendasMesCategoria();
+        return new ResponseEntity<>(a, HttpStatus.OK);
+    }
+
     @RequestMapping(value="/ordenesmes", method = RequestMethod.GET)
     public ResponseEntity<Integer> getOrdenesMes(){
         Integer a = orderRepository.getOrdenesMes();
