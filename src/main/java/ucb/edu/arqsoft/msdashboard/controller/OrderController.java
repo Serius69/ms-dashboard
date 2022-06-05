@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("/api/dashboard")
+@RequestMapping("/api/order")
 public class OrderController {
 
     private OrderRepository orderRepository;
@@ -27,32 +27,32 @@ public class OrderController {
 
     @RequestMapping(value="/prendasmes", method = RequestMethod.GET)
     public ResponseEntity<Integer> getPrendasMes(){
-        Integer a = orderRepository.getPrendasMes();
-        return new ResponseEntity<>(a, HttpStatus.OK);
+        //Integer a = orderRepository.getPrendasMes();
+        return new ResponseEntity<>(13, HttpStatus.OK);
     }
 
     @RequestMapping(value="/prendasmescategoria", method = RequestMethod.GET)
     public ResponseEntity<Integer> getPrendasMesCategoria(){
-        Integer a = orderRepository.getPrendasMesCategoria();
-        return new ResponseEntity<>(a, HttpStatus.OK);
+        // a = orderRepository.getPrendasMesCategoria();
+        return new ResponseEntity<>(14, HttpStatus.OK);
     }
 
     @RequestMapping(value="/ordenesmes", method = RequestMethod.GET)
     public ResponseEntity<Integer> getOrdenesMes(){
-        Integer a = orderRepository.getOrdenesMes();
-        return new ResponseEntity<>(a, HttpStatus.OK);
+        //Integer a = orderRepository.getOrdenesMes();
+        return new ResponseEntity<>(15, HttpStatus.OK);
     }
 
     @RequestMapping(value="/montomes", method = RequestMethod.GET)
     public ResponseEntity<Float> getMontoMes(){
-        Float a = orderRepository.getMontoMes();
-        return new ResponseEntity<>(a, HttpStatus.OK);
+        //Float a = orderRepository.getMontoMes();
+        return new ResponseEntity<>(16.0f, HttpStatus.OK);
     }
 
     @RequestMapping(value="/cantidadprendasmes", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCantidadPrendasMes(){
-        Integer a = orderRepository.getCantidadPrendasMes();
-        return new ResponseEntity<>(a, HttpStatus.OK);
+        //Integer a = orderRepository.getCantidadPrendasMes();
+        return new ResponseEntity<>(17, HttpStatus.OK);
     }
 
 
