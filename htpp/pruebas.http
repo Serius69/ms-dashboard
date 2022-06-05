@@ -1,5 +1,15 @@
 ###
-GET https://localhost:8083/api/dashboard/prendasporcategoria
+GET http://localhost:8282/api/dashboard/prendasporcategoria
 ###
-
+###Falla
+GET http://localhost:8282/ms-product/api/product/prendassinstock
+###
+###Llamado de productos
+GET http://localhost:8282/ms-product/api/products
+###
+###
+GET http://localhost:8282/ms-dashboard/api/dashboard/prendassinstock
+###
+###
+GET http://localhost:8282/ms-product/api/products
 ###

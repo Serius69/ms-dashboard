@@ -26,7 +26,7 @@ public class ProductController {
 
     @RequestMapping(value="/prendassinstock", method = RequestMethod.GET)
     public ResponseEntity<Integer> getPrendasSinStock(){
-        Integer a = productRepository.getPrendasSinStock();
+        Integer a = 200;
         return new ResponseEntity<>(a, HttpStatus.OK);
     }
     @RequestMapping(value="/prendasconstock", method = RequestMethod.GET)
