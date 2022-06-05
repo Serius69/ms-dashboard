@@ -1,13 +1,6 @@
-FROM azul/zulu-openjdk:11.0.10
-
-RUN apt update
-
-#COPY target/ms-costumer-0.0.1-SNAPSHOT.jar ms-costumer-0.0.1.jar
-
-ARG DEPENDENCY=./target/dependency-docker
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
+FROM azul/zulu-openjdk:11.0.10 as test
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
 
 ENV SPRING_PROFILE local
 ENV SERVER_PORT 9091

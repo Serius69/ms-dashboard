@@ -13,7 +13,7 @@ import ucb.edu.arqsoft.msdashboard.service.ProductService;
 
 import java.util.List;
 
-@CrossOrigin("https://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/dashboard")
 public class OrderController {
