@@ -1,15 +1,15 @@
 ###
-GET http://localhost:8282/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/prendassinstock
 ###
-###Falla
-GET http://localhost:8282/ms-product/api/product/prendassinstock
+GET https://localhost:9030/api/dashboard/prendasconstock
 ###
-###Llamado de productos
-GET http://localhost:8282/ms-product/api/products
+GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
+GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
-GET http://localhost:8282/ms-dashboard/api/dashboard/prendassinstock
+GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
+GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
-GET http://localhost:8282/ms-product/api/products
+GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
