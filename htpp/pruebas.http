@@ -5,11 +5,11 @@ GET https://localhost:9030/api/dashboard/prendasconstock
 ###
 GET https://localhost:9030/api/dashboard/prendasporcategoria
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/prendasmes
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/prendasmescategoria
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/cantidadprendasmes
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/montomes
 ###
