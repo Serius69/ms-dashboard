@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucb.edu.arqsoft.msdashboard.dao.DasboardDao;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
-import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
@@ -15,10 +15,10 @@ public class DashboardBl {
     @Autowired
     DasboardDao dasboardDao;
 
-    public DataNumberDto getProductsWithstock() {
+    public DataIntDto getProductsWithstock() {
         return dasboardDao.getProductsWithstock();
     }
-    public DataNumberDto getProductsWithoutstock() {
+    public DataIntDto getProductsWithoutstock() {
         return dasboardDao.getProductsWithoutstock();
     }
     public List<DataStringDoubleDto> getProductsCategory() {

@@ -1,11 +1,11 @@
 package ucb.edu.arqsoft.msdashboard.dto;
 
-public class DataNumberDto {
+public class DataIntDto {
 
 
     private double quantity;
 
-    public DataNumberDto() {
+    public DataIntDto() {
     }
 
     public double getQuantity() {

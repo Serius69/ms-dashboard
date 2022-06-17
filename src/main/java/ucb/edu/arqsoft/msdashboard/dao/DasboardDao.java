@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucb.edu.arqsoft.msdashboard.bl.DashboardBl;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
-import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
@@ -22,9 +22,9 @@ public class DasboardDao {
     private DataSource dataSource;
     private DashboardBl dashboardBl;
     //Retornar todos los productos sin stock
-    public DataNumberDto getProductsWithoutstock() {
+    public DataIntDto getProductsWithoutstock() {
 
-        DataNumberDto result = new DataNumberDto();
+        DataIntDto result = new DataIntDto();
         try(
                 Connection conn = dataSource.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(
@@ -44,8 +44,8 @@ public class DasboardDao {
     }
 
     //Retornar los productos con stock
-    public DataNumberDto getProductsWithstock() {
-        DataNumberDto result = new DataNumberDto();
+    public DataIntDto getProductsWithstock() {
+        DataIntDto result = new DataIntDto();
         try(
                 Connection conn = dataSource.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(

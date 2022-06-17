@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.arqsoft.msdashboard.bl.DashboardBl;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
-import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
@@ -24,14 +24,14 @@ public class DashboardApi {
     private DashboardBl dashboardBl;
 
     @GetMapping(path = "/productsinstock")
-    public DataNumberDto getProductWithoutStock() {
-        DataNumberDto data = dashboardBl.getProductsWithoutstock();
+    public DataIntDto getProductWithoutStock() {
+        DataIntDto data = dashboardBl.getProductsWithoutstock();
         return data;
     }
 
     @GetMapping(path = "/productconstock")
-    public DataNumberDto getProductWithStock() {
-        DataNumberDto data = dashboardBl.getProductsWithstock();
+    public DataIntDto getProductWithStock() {
+        DataIntDto data = dashboardBl.getProductsWithstock();
         return data;
     }
 
