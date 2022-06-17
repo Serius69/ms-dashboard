@@ -9,5 +9,5 @@ GET https://localhost:9030/api/dashboard/productsells
 ###
 GET https://localhost:9030/api/dashboard/moneysellsbymonth
 ###
-GET https://localhost:9030/api/dashboard/productconstock
+GET https://localhost:9030/api/dashboard/productsellsbycategoryandmonth
 ###

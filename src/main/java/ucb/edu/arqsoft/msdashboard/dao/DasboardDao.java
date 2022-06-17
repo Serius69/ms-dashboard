@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import ucb.edu.arqsoft.msdashboard.bl.DashboardBl;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -47,8 +49,7 @@ public class DasboardDao {
         try(
                 Connection conn = dataSource.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(
-                        " select count(*)  from product where units_in_stock > 0" )
-        )
+                        " select count(*)  from product where units_in_stock > 0" )        )
         {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -67,7 +68,10 @@ public class DasboardDao {
         List<DataStringDoubleDto> result = new ArrayList<>();
         try(Connection conn = dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(
-      " select b.category_name, count(*) from product as a join product_category as b where a.category_id = b.id group by b.id" )
+      " select b.category_name, count(*) from product as a " +
+              "join product_category as b " +
+              "where a.category_id = b.id group by b.id" )
+
         ) {
             ResultSet rs = pstmt.executeQuery();
 //            if (rs.next()) {
@@ -87,27 +91,32 @@ public class DasboardDao {
         }
         return result;
     }
-    //prendas vendidas por mes por categoria
-    public List<DataStringDoubleDto> getProductSells() {
-        List<DataStringDoubleDto> result = new ArrayList<>();
-        try(
-                Connection conn = dataSource.getConnection();
-                //arreglar query
-                PreparedStatement pstmt = conn.prepareStatement(
-                        " select b.category_name, count(*) from product as a join product_category as b where a.category_id = b.id group by b.id" )
-        )
-        {
+    //cantidad de prendas vendidas por mes
+    public List<DataStringIntDto>  getProductSells() {
+        List<DataStringIntDto>  result = new ArrayList<>();
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(
+                    " select MONTHNAME(o.date_created), sum(o.total_quantity) " +
+                            "from product as p " +
+                            "join order_item as oi " +
+                            "join orders as o " +
+                            "where oi.product_id = p.id " +
+                            "and o.order_tracking_number = oi.id " +
+                            "GROUP BY YEAR(o.date_created), MONTH(o.date_created)" )
+
+        ) {
             ResultSet rs = pstmt.executeQuery();
 //            if (rs.next()) {
             while (rs.next()) {
-                DataStringDoubleDto data = new DataStringDoubleDto();
-                data.setCategory(rs.getString("b.category_name"));
-                data.setQuentity(rs.getDouble("count(*)"));
+                DataStringIntDto data = new DataStringIntDto();
+                data.setCategory(rs.getString("MONTHNAME(o.date_created)"));
+                data.setQuantity(rs.getInt("sum(o.total_quantity)"));
                 result.add(data);
             }
 //            } else { // si no hay valores de BBDD
-//                result.setCategory(null);
-//                result.setQuentity(0.0);
+//                data.setCategory(null);
+//                data.setQuentity(0.0);
+//                result.add(data);
 //            }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -130,6 +139,39 @@ public class DasboardDao {
                 DataStringDoubleDto data = new DataStringDoubleDto();
                 data.setCategory(rs.getString("MONTHNAME(date_created)"));
                 data.setQuentity(rs.getDouble("sum(total_price)"));
+                result.add(data);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
+    // cantidad de prendas vendidas por mes y dividido por categoria
+    public List<DataStringStringIntDto> getQuantitySellsbyMonthCategory() {
+        List<DataStringStringIntDto> result = new ArrayList<>();
+        try(
+                Connection conn = dataSource.getConnection();
+                //arreglar query
+                PreparedStatement pstmt = conn.prepareStatement(
+                        " select MONTHNAME(o.date_created), pc.category_name, sum(o.total_quantity) " +
+                                "from product as p " +
+                                "join product_category as pc " +
+                                "join order_item as oi " +
+                                "join orders as o " +
+                                "where p.category_id = pc.id " +
+                                "and oi.product_id = p.id " +
+                                "and o.order_tracking_number = oi.id " +
+                                "GROUP BY YEAR(o.date_created), MONTH(o.date_created), pc.category_name " +
+                                "ORDER BY MONTH(o.date_created), pc.id " )
+        )
+        {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+//                System.out.println("llenando datos");
+                DataStringStringIntDto data = new DataStringStringIntDto();
+                data.setMonthName(rs.getString("MONTHNAME(o.date_created)"));
+                data.setCategoryName(rs.getString("pc.category_name"));
+                data.setQuantity(rs.getInt("sum(o.total_quantity)"));
                 result.add(data);
             }
         } catch (Exception ex) {

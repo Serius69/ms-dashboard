@@ -3,7 +3,7 @@ package ucb.edu.arqsoft.msdashboard.dto;
 public class DataStringIntDto {
 
     private String category;
-    private Double quentity;
+    private Integer quantity;
 
     public DataStringIntDto() {
     }
@@ -16,11 +16,11 @@ public class DataStringIntDto {
         this.category = category;
     }
 
-    public Double getQuentity() {
-        return quentity;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuentity(Double quentity) {
-        this.quentity = quentity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

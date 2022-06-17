@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import ucb.edu.arqsoft.msdashboard.dao.DasboardDao;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
 import java.util.List;
 
@@ -22,11 +24,14 @@ public class DashboardBl {
     public List<DataStringDoubleDto> getProductsCategory() {
         return dasboardDao.getProductCategory();
     }
-    public List<DataStringDoubleDto> getProductSells() {
+    public List<DataStringIntDto> getProductSells() {
         return dasboardDao.getProductSells();
     }
     public List<DataStringDoubleDto> getSellsbyMonth() {
         return dasboardDao.getSellsbyMonth();
+    }
+    public List<DataStringStringIntDto> getQuantitySellsbyMonthCategory() {
+        return dasboardDao.getQuantitySellsbyMonthCategory();
     }
 
 

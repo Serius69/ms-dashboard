@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import ucb.edu.arqsoft.msdashboard.bl.DashboardBl;
 import ucb.edu.arqsoft.msdashboard.dto.DataStringDoubleDto;
 import ucb.edu.arqsoft.msdashboard.dto.DataNumberDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringIntDto;
+import ucb.edu.arqsoft.msdashboard.dto.DataStringStringIntDto;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -41,14 +43,20 @@ public class DashboardApi {
     }
 
     @GetMapping(path = "/productsells")
-    public List<DataStringDoubleDto> getProductSells() {
-        List<DataStringDoubleDto> dashboard = dashboardBl.getProductSells();
+    public List<DataStringIntDto> getProductSells() {
+        List<DataStringIntDto> dashboard = dashboardBl.getProductSells();
         return dashboard;
     }
 
     @GetMapping(path = "/moneysellsbymonth")
     public List<DataStringDoubleDto> getSellsbyMonth() {
         List<DataStringDoubleDto> dashboard = dashboardBl.getSellsbyMonth();
+        return dashboard;
+    }
+
+    @GetMapping(path = "/productsellsbycategoryandmonth")
+    public List<DataStringStringIntDto> getQuantitySellsbyMonthCategory() {
+        List<DataStringStringIntDto> dashboard = dashboardBl.getQuantitySellsbyMonthCategory();
         return dashboard;
     }
 
