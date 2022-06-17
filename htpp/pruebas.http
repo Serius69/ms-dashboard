@@ -1,15 +1,13 @@
 ###
-GET https://localhost:9030/api/dashboard/prendassinstock
+GET https://localhost:9030/api/dashboard/productsinstock
 ###
-GET https://localhost:9030/api/dashboard/prendasconstock
+GET https://localhost:9030/api/dashboard/productconstock
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/productbycategory
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/productsells
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/moneysellsbymonth
 ###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
-###
-GET https://localhost:9030/api/dashboard/prendasporcategoria
+GET https://localhost:9030/api/dashboard/productconstock
 ###
